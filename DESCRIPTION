@@ -1,0 +1,19 @@
+Package: modulR
+Title: Do Modular Arithmetic
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Paul",
+           family = "Egeler",
+           role = c("aut", "cre"),
+           email = "paulegeler+r@gmail.com",
+           comment = c(ORCID = "0000-0001-6948-9498"))
+Description: A very small package to help you do modular arithmetic.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.0
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

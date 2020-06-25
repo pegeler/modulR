@@ -1,0 +1,83 @@
+---
+title: "modulR"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{modulR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(modulR)
+```
+
+
+## Example using $Z_{11}$
+
+First, we create a function for doing arithmetic in $Z_{11}$ space. We can then see
+that $13 \equiv 2 \pmod{11}$.
+
+```{r}
+z11 <- m_arithmetic(11)
+
+z11$identity(13)
+```
+
+Now we can also do arithmetic, such as add, subtract, multiply, and divide.
+
+### Addition
+
+```{r}
+z11$add(9, 5)
+```
+
+### Subtraction
+
+```{r}
+z11$sub(9, 5)
+```
+
+### Multiplication
+
+```{r}
+z11$mul(9, 5)
+```
+
+### Division
+
+```{r}
+z11$div(9, 5)
+```
+
+
+### Multiplication Table
+
+The multiplication table is also saved.
+
+#### Z11
+
+```{r}
+z11$tables$mul
+```
+
+#### Z10
+
+```{r}
+m_arithmetic(10)$tables$mul
+```
+
+## BONUS: Code Golf
+
+37 bytes...
+
+```{r golf}
+t=function(z)(s<-seq_len(z-1))%o%s%%z
+t(11)
+```
