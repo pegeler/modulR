@@ -9,7 +9,7 @@ m_table(z, FUN = "*")
 \arguments{
 \item{z}{The ring size.}
 
-\item{FUN}{The binary function to be applied.}
+\item{FUN}{The binary operation to be applied.}
 }
 \description{
 Create a arithmetic table in Z_n space

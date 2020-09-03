@@ -14,17 +14,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
-library(modulR)
-```
-
-
 ## Example using $Z_{11}$
 
 First, we create a function for doing arithmetic in $Z_{11}$ space. We can then see
 that $13 \equiv 2 \pmod{11}$.
 
 ```{r}
+library(modulR)
+
 z11 <- m_arithmetic(11)
 
 z11$identity(13)
@@ -32,27 +29,18 @@ z11$identity(13)
 
 Now we can also do arithmetic, such as add, subtract, multiply, and divide.
 
-### Addition
 
 ```{r}
+# Addition
 z11$add(9, 5)
-```
 
-### Subtraction
-
-```{r}
+# Subtraction
 z11$sub(9, 5)
-```
 
-### Multiplication
-
-```{r}
+# Multiplication
 z11$mul(9, 5)
-```
 
-### Division
-
-```{r}
+# Division
 z11$div(9, 5)
 ```
 
@@ -61,23 +49,25 @@ z11$div(9, 5)
 
 The multiplication table is also saved.
 
-#### Z11
+**Z11**
 
 ```{r}
 z11$tables$mul
 ```
 
-#### Z10
+**Z10**
+
+Here is the addition table in $Z_{10}$.
 
 ```{r}
-m_arithmetic(10)$tables$mul
+m_arithmetic(10)$tables$add
 ```
 
 ## BONUS: Code Golf
 
-37 bytes...
+32 bytes...
 
 ```{r golf}
-t=function(z)(s<-seq_len(z-1))%o%s%%z
-t(11)
+t=function(z)(s<-1:(z-1))%o%s%%z
+structure(t(11), FUN="*", class="m_table")
 ```

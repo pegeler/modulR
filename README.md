@@ -7,7 +7,14 @@
 
 <!-- badges: end -->
 
-The goal of modulR is to facilitate modular arithmetic operations.
+This R package helps do modular arithmetic operations. In particular, it
+can give arithmetic (multiplication) tables in modular space.
+
+It is a demo package meant to show some strategies for creating packages
+and illustrates some basic S3 classes in R. It is not meant for
+production use. A better package for doing modular arithmetic in R would
+be the [gmp](https://cran.r-project.org/package=gmp) package (or base
+R\!).
 
 ## Installation
 
@@ -24,6 +31,8 @@ library(modulR)
 
 # Initialize
 z11 <- m_arithmetic(11)
+z11
+#> A modulR object, modulus 11
 
 # What is 13 in Z_11?
 z11$identity(13)

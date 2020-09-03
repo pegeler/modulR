@@ -1,7 +1,7 @@
 #' Create a arithmetic table in Z_n space
 #'
 #' @param z The ring size.
-#' @param FUN The binary function to be applied.
+#' @param FUN The binary operation to be applied.
 #' @export
 m_table <- function(z, FUN = '*') {
   z_seq <- seq_len(z - 1)
@@ -30,21 +30,31 @@ print.m_table <- function(x, ...) {
   invisible(x)
 }
 
+#' @export
+print.modulR <- function(x, ...) {
+  cat("A modulR object, modulus", x$modulus, "\n")
+  invisible(x)
+}
+
 #' Function factory for doing modular arithmetic
 #'
 #' @param z The ring size.
 #' @export
 m_arithmetic <- function(z) {
   mtable <- m_table(z)
-  list(
-    identity = function(a) a %% z,
-    add = function(a, b) (a + b) %% z,
-    sub = function(a, b) (a - b) %% z,
-    mul = function(a, b) (a * b) %% z,
-    div = function(a, b) as.vector(which(a == mtable[,b])),
-    tables = list(
-      add = m_table(z, '+'),
-      mul = mtable
-    )
+  structure(
+    list(
+      modulus = z,
+      identity = function(a) a %% z,
+      add = function(a, b) (a + b) %% z,
+      sub = function(a, b) (a - b) %% z,
+      mul = function(a, b) (a * b) %% z,
+      div = function(a, b) as.vector(which(a == mtable[,b])),
+      tables = list(
+        add = m_table(z, '+'),
+        mul = mtable
+      )
+    ),
+    class = "modulR"
   )
 }
