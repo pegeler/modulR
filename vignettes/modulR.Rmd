@@ -65,9 +65,11 @@ m_arithmetic(10)$tables$add
 
 ## BONUS: Code Golf
 
-32 bytes...
+23 bytes...
 
 ```{r golf}
-t=function(z)(s<-1:(z-1))%o%s%%z
+t=\(z)(s<-1:(z-1))%o%s%%z
+
+# Wrap in a 'm_table' class for pretty printing...
 structure(t(11), FUN="*", class="m_table")
 ```
